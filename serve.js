@@ -2,6 +2,7 @@
 
 const express = require('express');
 const cors = require('cors');
+const chalk = require('chalk');
 const data = require('./data.json');
 
 const app = express();
@@ -38,13 +39,16 @@ const randomDelayInMilliSeconds = () => Math.floor(
   Math.random() * (MAX_DELAY_IN_MS - MIN_DELAY_IN_MS) + MIN_DELAY_IN_MS,
 );
 
-const timestamp = () => (new Date()).toISOString();
+const say = (message) => {
+  const timestamp = `[${(new Date()).toISOString()}]`;
+  console.log(`${chalk.yellow(timestamp)} ${message}`);
+};
 
 const queryParamMiddleware = (req, res, next) => {
   const responseDelay = 'fast' in req.query ? 0 : randomDelayInMilliSeconds();
 
   if (responseDelay > 0) {
-    console.warn(`${timestamp()}: ⚠️  Delaying response by ${responseDelay}ms`);
+    say(`⚠️  Delaying response by ${responseDelay}ms`);
   }
 
   if ('succeed' in req.query) {
@@ -93,6 +97,6 @@ app.use((_, res) => res.status(404).send({
   message: 'Could not find that resource.',
 }));
 
-app.listen(port, () => console.log(
-  `${timestamp()}: 🚀 The Fake Fields API is listening on port ${port}`,
+app.listen(port, () => say(
+  `🚀 The Fake Fields API is listening on port ${port}`,
 ));
