@@ -103,6 +103,14 @@ Create a React application that uses the API to render the list of fields and th
 
 Use [reactstrap](https://reactstrap.github.io/) but don't worry about how your solution looks (we have a great design team for that.) Just focus on the states of the app and the information you're showing the user. Use TypeScript or JavaScript (or Reason!) Be prepared for questions about how you'd test your app.
 
+For each field, please display the following items. More details on each of these items and how to get them can be found in the sections below.
+* Name of the field
+* The emoji corresponding to the field's type
+* The flag for the country the field belongs to
+* The area of the field in acres
+
+In addition, please display the total number of fields.
+
 ### The List of Fields
 
 When you load the list (via `/fields`), don't display any field's `id`. Just show its `name`. For the field's `type`, don't display the text; show these emojis instead
@@ -110,8 +118,6 @@ When you load the list (via `/fields`), don't display any field's `id`. Just sho
 * 🏦 when the `type` is "corporate"
 * 👥 when the `type` is "collective"
 * 👤 when the `type` is "individual"
-
-Display a total number of fields.
 
 ### A Single Field
 
