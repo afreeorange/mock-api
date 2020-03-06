@@ -1,7 +1,9 @@
 The API
 -------
 
-Always replies with an `application/json` content-type and has just two endpoints.
+Always replies with an `application/json` content-type and has just two endpoints. 
+
+Run with `yarn serve`. To enable live-reloading for any reason, run `yarn watch`. Go to [`http://localhost:3000`](http://localhost:3000).
 
 ### GET `/fields`
 
@@ -67,7 +69,7 @@ Here's a sample request and response:
 }
 ```
 
-You'll get a 404 if the ID was not found.
+You'll get an HTTP 404 if the ID was not found.
 
 The API is a Bit Terrible
 -------------------------
@@ -76,6 +78,14 @@ At Granular, our APIs are fast, resilient, and reliable. _This_ API isn't any of
 
 * For both endpoints, it will reply with a happy HTTP 200 around 75% of the time and sulk with an HTTP 500 otherwise.
 * You can expect to wait anywhere between 10ms and 3s for all responses.
+
+That being said, you can add these URL params to both endpoints so you can develop faster:
+
+* Add `?fail` to get nothing but HTTP 500s
+* Add `?succeed` to get nothing but HTTP 200s (supercedes `fail`)
+* Add `?fast` to enjoy a super-fast API without the simulated latency
+
+E.g. `/fields?fail&fast`
 
 Your Tasks
 ----------
@@ -91,6 +101,8 @@ When you load the list (via `/fields`), don't display any field's `id`. Just sho
 * 🏦 when the `type` is "corporate"
 * 👥 when the `type` is "collective"
 * 👤 when the `type` is "individual"
+
+Display a total number of fields.
 
 ### A Single Field
 
