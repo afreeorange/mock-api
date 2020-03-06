@@ -12,7 +12,7 @@ The API
 
 Always replies with an `application/json` content-type and has just two endpoints.
 
-Run with `yarn serve`. To enable live-reloading for any reason, run `yarn watch`. Go to [`http://localhost:3000`](http://localhost:3000) (or set an environment variable `PORT` to whatever you'd like.)
+Run with `yarn serve`. To enable live-reloading for any reason, run `yarn watch`. Go to [`http://localhost:8000`](http://localhost:8000) (or set an environment variable `PORT` to whatever you'd like.)
 
 ### GET `/fields`
 

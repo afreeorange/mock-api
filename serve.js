@@ -6,7 +6,7 @@ const chalk = require('chalk');
 const data = require('./data.json');
 
 const app = express();
-const port = process.env.port || 3000;
+const port = process.env.port || 8000;
 const MIN_DELAY_IN_MS = 10;
 const MAX_DELAY_IN_MS = 3000;
 const SUCCESS_THRESHOLD = 0.75; // I.e. "Succeed ~75% of the time"
@@ -69,13 +69,15 @@ const queryParamMiddleware = (req, res, next) => {
 
 /**
  *
- * The Stack  🥞 😋
+ * The Stack 🥞 😋
  *
  */
 
 app.use(cors());
 
-app.get('/', (_, res) => res.send('Why hello! Have you read the README?'));
+app.get('/', (_, res) => res.send({
+  message: 'Why hello! Have you read the README?',
+}));
 
 app.use(queryParamMiddleware);
 
