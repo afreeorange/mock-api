@@ -1,3 +1,12 @@
+* [The API](#the-api)
+    - [GET `/fields`](#get-fields)
+    - [GET `/fields/:id`](#get-fieldsid)
+* [The API is a Bit Terrible](#the-api-is-a-bit-terrible)
+* [Your Tasks](#your-tasks)
+    - [The List of Fields](#the-list-of-fields)
+    - [A Single Field](#a-single-field)
+    - [Extra Credit](#extra-credit)
+
 The API
 -------
 
