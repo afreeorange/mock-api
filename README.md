@@ -1,9 +1,9 @@
 The API
 -------
 
-Always replies with an `application/json` content-type and has just two endpoints. 
+Always replies with an `application/json` content-type and has just two endpoints.
 
-Run with `yarn serve`. To enable live-reloading for any reason, run `yarn watch`. Go to [`http://localhost:3000`](http://localhost:3000).
+Run with `yarn serve`. To enable live-reloading for any reason, run `yarn watch`. Go to [`http://localhost:3000`](http://localhost:3000) (or set an environment variable `PORT` to whatever you'd like.)
 
 ### GET `/fields`
 
@@ -130,3 +130,6 @@ The library will return squared meters. Convert that to acres with two decimal p
 ### Extra Credit
 
 * Write a toggler that allows the user to switch between acres and hectares (1 m<sup>2</sup> = 0.0001 hectares)
+* Add a dropdown to filter by field `type`
+* Sort fields by their area
+* Group by country code
