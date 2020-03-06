@@ -46,6 +46,7 @@ Here's a sample request and response:
 {
   "id": "2f7211fd-f196-43be-adcd-f90ccba67dd3",
   "name": "Makeba",
+  "type": "corporation",
   "countryCode": "US",
   "geoData": {
     "type": "Feature",
