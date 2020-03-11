@@ -1,3 +1,4 @@
+* [Pre-interview](#pre-interview)
 * [The API](#the-api)
     - [GET `/fields`](#get-fields)
     - [GET `/fields/:id`](#get-fieldsid)
@@ -6,6 +7,16 @@
     - [The List of Fields](#the-list-of-fields)
     - [A Single Field](#a-single-field)
     - [Extra Credit](#extra-credit)
+
+Pre-interview
+-------------
+
+For this part of the interview, you will be live-coding a mini React app based on the API provided in this repo.
+Please make sure you have the following ready prior to the interview.
+
+1. Ensure that you are able to screen share via zoom from your computer.
+2. Have a code editor and terminal of your choice
+3. Have an empty [create-react-app](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app) set up and ready to go
 
 The API
 -------
