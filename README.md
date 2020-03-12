@@ -123,6 +123,7 @@ Use [reactstrap](https://reactstrap.github.io/) but don't worry about how your s
 
 Using the two endpoints, you'll need to show
 
+* A list of all the fields
 * The total number of fields
 * The `name` of each field
 * A little icon for each field's `type`
