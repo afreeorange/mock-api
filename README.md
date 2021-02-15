@@ -32,7 +32,7 @@ To enable live-reloading for any reason, run `yarn watch`. To change the default
 The API
 -------
 
-Always replies with an `application/json` content-type and has only two endpoints. Please look at `resources/types.ts` for what you'll get back.
+Always replies with an `application/json` content-type and has only two endpoints. Please look at `resources/types.ts` for what you'll get back. You will want to use that file in your project.
 
 ### GET `/fields` &rarr; `{ fields: BasicField[] }`
 
@@ -42,7 +42,7 @@ Returns some basic information on all the fields in the backend. Here's a sample
 {
   "fields": [
     {
-        "id": "2f7211fd-f196-43be-adcd-f90ccba67dd3",
+        "id": "318fcafb-a40c-425e-bb91-798f2b3e6c3e",
         "name": "Makeba",
         "type": "corporate"
     },
@@ -66,14 +66,15 @@ For the given field ID, returns its basic information _plus_ extended informatio
 
 Here's a sample request and response:
 
-    GET /fields/2f7211fd-f196-43be-adcd-f90ccba67dd3
+    GET /fields/318fcafb-a40c-425e-bb91-798f2b3e6c3e
 
 ```javascript
 {
-  "id": "2f7211fd-f196-43be-adcd-f90ccba67dd3",
-  "name": "Makeba",
-  "type": "corporate",
-  "countryCode": "US",
+  "id": "318fcafb-a40c-425e-bb91-798f2b3e6c3e",
+  "countryCode": "IN",
+  "name": "Moyanka",
+  "owner": "Giuseppe Sydow",
+  "type": "collective",
   "geoData": {
     "type": "Feature",
     "properties": {},
@@ -81,35 +82,35 @@ Here's a sample request and response:
       "type": "Polygon",
       "coordinates": [
         [
-          [-113.09326171875, 46.22545288226939],
-          [-111.5277099609375, 46.22545288226939],
-          [-111.5277099609375, 47.234489635299184],
-          [-113.09326171875, 47.234489635299184],
-          [-113.09326171875, 46.22545288226939],
-        ],
-      ],
-    },
-  },
+          [-95.42449951171875, 44.32384807250689],
+          [-95.152587890625, 44.32384807250689],
+          [-95.152587890625, 44.39257961837961],
+          [-95.42449951171875, 44.39257961837961],
+          [-95.42449951171875, 44.32384807250689]
+        ]
+      ]
+    }
+  }
 }
 ```
 
-You'll get the usual HTTP 404 if the ID was not found.
+You'll get the expected `HTTP 404` if the Field ID was not found in the `/fields` collection.
 
 The API is a Bit Terrible...
 ----------------------------
 
-At Granular, our APIs are fast, resilient, and reliable. _This_ API isn't _any_ of these things 🙄
+At Granular, our APIs are fast, resilient, and reliable 😎 But _this_ API isn't _any_ of these things 🙄
 
-* For both endpoints, it will reply with a happy `HTTP 200` around 75% of the time and sulk with an `HTTP 500` otherwise.
-* You can expect to wait anywhere between 10ms and 3s for all responses.
+* For both endpoints, it will reply with a **happy `HTTP 200` around 75% of the time** and sulk with a **sad `HTTP 500` around 25% of the time**.
+* You might **wait between 10ms and 3s** for all responses.
 
-That being said, you can add these URL params to both endpoints so you can develop faster:
+Locally, you can add these URL params to all endpoints so _you_ can develop faster:
 
 * Add `?fail` to get nothing but HTTP 500s
-* Add `?succeed` to get nothing but HTTP 200s (supercedes `fail`)
+* Add `?succeed` to get nothing but HTTP 200s (supercedes `fail` (so let's not waste time being cheeky with `fail&succeed` 😁))
 * Add `?fast` to enjoy a super-fast API without the simulated latency
 
-E.g.: `/fields?fail&fast` (Please note: `succeed` is prioritized, so let's not waste time being cheeky with `fail&succeed` 😁)
+Example: `/fields?fail&fast`
 
 Your Task
 ---------
@@ -118,21 +119,21 @@ Create a React application that uses the API to render the list of fields and th
 
 Using the two endpoints, you'll need to show
 
-* A list of all the fields
-* The total number of fields
-* The `name` of each field
-* A little icon for each field's `type`
+* A list of all the Fields
+* The total number of Fields
+* The name of each Field
+* A little icon for each Field's `type`
     - 🏦 when the `type` is "corporate"
     - 👥 when the `type` is "collective"
     - 👤 when the `type` is "individual"
-* A small flag based on a field's `countryCode`
-* The field's area in acres based on its `geoData`
+* A small flag based on a Field's `countryCode`
+* The Field's area in acres based on its `geoData`
 
 We use (a highly customized extension of) [Reactstrap](https://reactstrap.github.io/) for our products so we'd prefer if you used that in your solution.
 
 ### Please note!
 
-👉 **If you're comfortable with another React UI library, please use it instead**.
+👉 If you're comfortable with a UI **library other than Reactstrap**, **please use it instead**.
 
 👉 **Don't worry about how your solution looks** (we have a fantastic Design team for that.) Just focus on the _states_ of the app and the _information_ you're showing the user. 
 
