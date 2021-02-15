@@ -8,6 +8,6 @@ tab_width = 4
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[*.{js,json}]
+[*.{js,json,jsx,ts,tsx}]
 indent_size = 2
 tab_width = 2
