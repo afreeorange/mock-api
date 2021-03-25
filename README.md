@@ -27,7 +27,11 @@ Please make sure you have
 
 Run with `yarn start` and go to [`http://localhost:8000`](http://localhost:8000).
 
-To enable live-reloading for any reason, run `yarn watch`. To change the default port from 8000 to something else, set the `PORT` environment variable.
+To enable live-reloading for any reason, run `yarn watch`. To change the host and port,
+
+```bash
+HOST="127.0.0.1" PORT=8080 yarn serve
+```
 
 The API
 -------

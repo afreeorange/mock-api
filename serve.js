@@ -6,7 +6,8 @@ const express = require("express");
 const morgan = require("morgan");
 
 const app = express();
-const port = process.env.port || 8000;
+const port = process.env.PORT || 8000;
+const host = process.env.HOST || "localhost";
 const MIN_DELAY_IN_MS = 10;
 const MAX_DELAY_IN_MS = 3000;
 const SUCCESS_THRESHOLD = 0.75; // I.e. 'Succeed ~75% of the time'
@@ -148,6 +149,8 @@ app.use((_, res) =>
   })
 );
 
-app.listen(port, () =>
-  console.log(`🚀 The Fake Fields API is listening on port ${port}`)
+app.listen(port, host, () =>
+  console.log(
+    `🚀 The Fake Fields API is listening on port http://${host}:${port}`
+  )
 );
