@@ -100,10 +100,10 @@ Here's a sample request and response:
 
 You'll get the expected `HTTP 404` if the Field ID was not found in the `/fields` collection.
 
-The API is a Bit Terrible...
-----------------------------
+The API is **_intentionally_** imperfect
+----------------------------------------
 
-At Granular, our APIs are fast, resilient, and reliable 😎 But _this_ API isn't _any_ of these things 🙄
+At Granular, our APIs are fast, resilient, and reliable 😎 But _this_ API isn't _any_ of these things. 🤦 For the sake of this exercise, consider it is an external, third-party API and build accordingly.
 
 * For both endpoints, it will reply with a **happy `HTTP 200` around 75% of the time** and sulk with a **sad `HTTP 500` around 25% of the time**.
 * You might **wait between 10ms and 3s** for all responses.
