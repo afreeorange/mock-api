@@ -21,7 +21,11 @@ Thank you for considering Granular! For a portion of your interview, you'll be *
 Please make sure you have
 
 * Installed [the Zoom client](https://zoom.us/download) *and are able to screen-share*
-* Your favorite React + TypeScript programming setup all ready to go
+* Installed `yarn`. You can probably use `npm` but it'll be easier if you have `yarn` ready to go. https://github.com/yarnpkg/berry#installation
+* Your favorite React + TypeScript programming setup all ready to go. Most-likely, that includes these things:
+  * Firing up `create-react-app` with typescript: https://create-react-app.dev/docs/adding-typescript/
+  * Being prepared to call an API and make use of its returned data with `fetch`, `xmlhttprequest`, or whatever package you like
+  * Having a skelleton component with a generic Type set up so you can easily swap things out and everything doesn't get thrown in `App.tsx`
 
 ### Running the API
 
