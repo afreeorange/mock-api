@@ -174,7 +174,7 @@ Allow a user to search fields by their name. A simple substring match is okay. E
 
 ### Task 4: Field Icons
 
-Use any library of your choice to create SVG icons of field shapes based on their individual GeoData. Place your icons next to the field name in your list of fields. The result would look something like `images/field-icons.png` in this repository.
+Use any library of your choice to create SVG icons of field shapes based on their individual GeoData. Place your icons next to the field name in your list of fields. The result would look something like `resources/images/field-icons.png` in this repository.
 
 ### Task 5: A Lot of Fields!
 
