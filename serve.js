@@ -11,6 +11,7 @@ const host = process.env.HOST || "localhost";
 const MIN_DELAY_IN_MS = 10;
 const MAX_DELAY_IN_MS = 3000;
 const SUCCESS_THRESHOLD = 0.75; // I.e. 'Succeed ~75% of the time'
+const MAX_ITEMS_PER_PAGE = 25;
 
 /**
  *
@@ -19,6 +20,8 @@ const SUCCESS_THRESHOLD = 0.75; // I.e. 'Succeed ~75% of the time'
  */
 
 const data = require("./data.json");
+const dataLength = Object.keys(data).length;
+const totalPages = Math.ceil(dataLength / MAX_ITEMS_PER_PAGE);
 
 const listOfFields = {
   fields: Object.keys(data).map((id) => ({
@@ -126,7 +129,57 @@ app.get("/", (_, res) =>
 
 app.use(queryParamMiddleware);
 
-app.get("/fields", (req, res) => res.send(listOfFields));
+app.get("/fields", (req, res) => {
+  if ("all" in req.query) {
+    res.send(listOfFields);
+  }
+  // Just send the first page if there is no page query
+  else if (!("page" in req.query)) {
+    res.send({
+      fields: Object.keys(data)
+        .slice(0, MAX_ITEMS_PER_PAGE)
+        .map((id) => ({
+          id,
+          name: data[id].name,
+          type: data[id].type,
+        })),
+    });
+  } else {
+    let page = parseInt(req.query.page);
+
+    if (!page) {
+      res.status(400).send({
+        message: "Page numbers must be integers.",
+      });
+    }
+
+    if (page > totalPages) {
+      res.status(404).send({
+        message: "No more fields!",
+      });
+    }
+
+    const from = (page - 1) * MAX_ITEMS_PER_PAGE;
+    const to = MAX_ITEMS_PER_PAGE + from;
+
+    res.send({
+      pages: {
+        page,
+        total: totalPages,
+        perPage: MAX_ITEMS_PER_PAGE,
+        prev: page - 1 === 0 ? null : page,
+        next: page === totalPages ? null : page + 1,
+      },
+      fields: Object.keys(data)
+        .slice(from, to)
+        .map((id) => ({
+          id,
+          name: data[id].name,
+          type: data[id].type,
+        })),
+    });
+  }
+});
 
 app.get("/fields/:id", (req, res) => {
   const { id } = req.params;
